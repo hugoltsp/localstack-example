@@ -1,0 +1,21 @@
+version: '3.3'
+services:
+  localstack:
+    container_name: localstack
+    image: localstack/localstack:0.11.4
+    ports:
+      - "4566-4599:4566-4599"
+      - "${PORT_WEB_UI-8080}:${PORT_WEB_UI-8080}"
+    environment:
+      - SERVICES=s3,kms
+      - DATA_DIR=/tmp/localstack/data
+      - PORT_WEB_UI=9000
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - HOST_TMP_FOLDER=${TMPDIR}
+      - START_WEB=1
+      - AWS_ACCESS_KEY_ID=aaa
+      - AWS_SECRET_ACCESS_KEY=aaa
+      - AWS_DEFAULT_REGION=US_EAST_1
+    volumes:
+      - "${TMPDIR:-/tmp/localstack}:/tmp/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
