@@ -3,6 +3,10 @@ package com.localstack.sample
 import com.amazonaws.client.builder.AwsClientBuilder
 import com.amazonaws.regions.Regions
 import com.amazonaws.services.s3.AmazonS3ClientBuilder
+import com.amazonaws.services.sqs.AmazonSQS
+import com.amazonaws.services.sqs.AmazonSQSClientBuilder
+import com.amazonaws.services.sqs.model.ReceiveMessageRequest
+
 
 class S3Config {
 
@@ -17,9 +21,28 @@ class S3Config {
                 .withEndpointConfiguration(endpointConfiguration)
                 .build()
 
-        awsS3.deleteObject("teste-123","BBBaokdpoaskdpokaspokapdos")
+        awsS3.deleteObject("teste-123", "BBBaokdpoaskdpokaspokapdos")
         awsS3.putObject("teste-123", "aaaaaaaaaaaaaaaaaaaaaa", "aaaaaa")
 
+    }
+
+    fun testSqsLocalstack() {
+
+        val endpointConfiguration = AwsClientBuilder
+                .EndpointConfiguration("http://localhost:4566", Regions.US_EAST_1.name)
+
+        val client: AmazonSQS = AmazonSQSClientBuilder
+                .standard()
+                .withEndpointConfiguration(endpointConfiguration)
+                .build()
+
+        val queueUrl = "http://localhost:4566/000000000000/teste"
+
+        while (true) {
+            client.receiveMessage(queueUrl)
+                    .messages
+                    .forEach { message -> println(message.body) }
+        }
     }
 
 }
