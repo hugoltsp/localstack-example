@@ -5,7 +5,6 @@ import com.amazonaws.regions.Regions
 import com.amazonaws.services.s3.AmazonS3ClientBuilder
 import com.amazonaws.services.sqs.AmazonSQS
 import com.amazonaws.services.sqs.AmazonSQSClientBuilder
-import com.amazonaws.services.sqs.model.ReceiveMessageRequest
 
 
 class S3Config {
@@ -29,20 +28,21 @@ class S3Config {
     fun testSqsLocalstack() {
 
         val endpointConfiguration = AwsClientBuilder
-                .EndpointConfiguration("http://localhost:4566", Regions.US_EAST_1.name)
+                .EndpointConfiguration("http://localhost:4576", Regions.US_EAST_1.name)
 
         val client: AmazonSQS = AmazonSQSClientBuilder
                 .standard()
                 .withEndpointConfiguration(endpointConfiguration)
                 .build()
 
-        val queueUrl = "http://localhost:4566/000000000000/teste"
+        val queueUrl = "http://localhost:4576/teste/teste"
 
         while (true) {
             client.receiveMessage(queueUrl)
                     .messages
                     .forEach { message -> println(message.body) }
         }
+
     }
 
 }
