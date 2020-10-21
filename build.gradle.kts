@@ -19,9 +19,10 @@ extra["springCloudVersion"] = "Hoxton.SR8"
 
 dependencies {
 
-    implementation("com.amazonaws:aws-java-sdk:1.9.6")
-    implementation("org.springframework:spring-jms")
-    implementation("com.amazonaws:amazon-sqs-java-messaging-lib:1.0.8")
+//    implementation("com.amazonaws:aws-java-sdk:1.9.6")
+//    implementation("com.amazonaws:amazon-sqs-java-messaging-lib:1.0.8")
+    implementation("io.springfox:springfox-swagger2:2.9.2")
+    implementation("io.springfox:springfox-swagger-ui:2.9.2")
     implementation("org.springframework.boot:spring-boot-starter")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
@@ -29,6 +30,8 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 //    implementation("software.amazon.awscdk:kms:1.61.1")
 //    implementation("software.amazon.awssdk:sqs:2.15.4")
+    implementation("org.springframework.cloud:spring-cloud-starter-aws")
+    implementation("org.springframework.cloud:spring-cloud-starter-aws-messaging")
     implementation("cloud.localstack:localstack-utils:0.2.1")
     testImplementation("org.testcontainers:localstack:1.14.3")
 
@@ -36,6 +39,12 @@ dependencies {
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
     }
 
+}
+
+dependencyManagement {
+    imports {
+        mavenBom("org.springframework.cloud:spring-cloud-dependencies:${property("springCloudVersion")}")
+    }
 }
 
 tasks.withType<Test> {
