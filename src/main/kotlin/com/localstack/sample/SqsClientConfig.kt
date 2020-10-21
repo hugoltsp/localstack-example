@@ -10,11 +10,11 @@ import com.amazonaws.services.sqs.AmazonSQSClientBuilder
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.jms.annotation.EnableJms
 import org.springframework.jms.config.DefaultJmsListenerContainerFactory
 import org.springframework.jms.core.JmsTemplate
-import org.springframework.jms.support.destination.DynamicDestinationResolver
 
-
+@EnableJms
 @Configuration
 class SqsClientConfig {
 
@@ -23,18 +23,19 @@ class SqsClientConfig {
         return JmsTemplate(sqsConnectionFactory)
     }
 
-//    @Bean
+    @Bean
     fun jmsListenerConnectionFactory(@Autowired sqsConnectionFactory: SQSConnectionFactory): DefaultJmsListenerContainerFactory {
         val factory = DefaultJmsListenerContainerFactory()
+//        factory.setConnectionFactory(sqsConnectionFactory)
         factory.setConnectionFactory(sqsConnectionFactory)
-        factory.setDestinationResolver(DynamicDestinationResolver())
-//        factory.setSessionAcknowledgeMode(Session.AUTO_ACKNOWLEDGE)
-        factory.setSessionTransacted(false)
+//        factory.setDestinationResolver(DynamicDestinationResolver())
+//        factory.setSessionAcknowledgeMode(Session.CLIENT_ACKNOWLEDGE)
         return factory
     }
 
     @Bean
     fun sqsConnectionFactory(): SQSConnectionFactory {
+
         return SQSConnectionFactory(ProviderConfiguration(), AmazonSQSClientBuilder
                 .standard()
                 .withEndpointConfiguration(AwsClientBuilder
