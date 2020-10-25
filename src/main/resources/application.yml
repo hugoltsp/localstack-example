@@ -6,5 +6,9 @@ cloud:
     credentials:
       access-key: aaa
       secret-key: aaa
+      sqs:
+        endpoint: http://localhost:4576
+      s3:
+        endpoint: http://localhost:4572
     stack:
       auto: false

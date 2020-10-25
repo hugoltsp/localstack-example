@@ -1,21 +1,12 @@
 package com.localstack.sample
 
-import org.springframework.boot.CommandLineRunner
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
-import org.springframework.cloud.aws.messaging.listener.annotation.SqsListener
+import org.springframework.cloud.aws.messaging.config.annotation.EnableSqs
 
+@EnableSqs
 @SpringBootApplication
-class App : CommandLineRunner {
-
-    @SqsListener("teste")
-    fun listen(payload: String) {
-        println(payload)
-    }
-
-    override fun run(vararg args: String?) {
-
-    }
+class App {
 
     companion object {
 

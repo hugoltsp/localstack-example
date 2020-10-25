@@ -19,8 +19,6 @@ extra["springCloudVersion"] = "Hoxton.SR8"
 
 dependencies {
 
-//    implementation("com.amazonaws:aws-java-sdk:1.9.6")
-//    implementation("com.amazonaws:amazon-sqs-java-messaging-lib:1.0.8")
     implementation("io.springfox:springfox-swagger2:2.9.2")
     implementation("io.springfox:springfox-swagger-ui:2.9.2")
     implementation("org.springframework.boot:spring-boot-starter")
@@ -28,8 +26,6 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-//    implementation("software.amazon.awscdk:kms:1.61.1")
-//    implementation("software.amazon.awssdk:sqs:2.15.4")
     implementation("org.springframework.cloud:spring-cloud-starter-aws")
     implementation("org.springframework.cloud:spring-cloud-starter-aws-messaging")
     implementation("cloud.localstack:localstack-utils:0.2.1")
