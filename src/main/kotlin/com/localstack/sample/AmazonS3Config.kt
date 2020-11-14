@@ -17,7 +17,7 @@ class AmazonS3Config {
     @Bean
     fun s3Client(@Value("\${cloud.aws.credentials.secret-key}") secretKey: String,
                  @Value("\${cloud.aws.credentials.access-key}") accessKey: String,
-                 @Value("\${cloud.aws.credentials.s3.endpoint}") endpoint: String,
+                 @Value("\${cloud.aws.credentials.endpoint}") endpoint: String,
                  @Value("\${cloud.aws.region.static}") region: String): AmazonS3 = AmazonS3ClientBuilder
             .standard()
             .enablePathStyleAccess()

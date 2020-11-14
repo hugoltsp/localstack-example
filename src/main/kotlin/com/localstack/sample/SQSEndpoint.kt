@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RestController
 class SQSEndpoint(val messageTemplate: QueueMessagingTemplate) {
 
     @PostMapping
-    fun post(@RequestBody SQSMessage: SQSMessage){
-        messageTemplate.convertAndSend("fila", SQSMessage)
+    fun post(@RequestBody message: SQSMessage){
+        messageTemplate.convertAndSend("fila", message)
     }
 
 }

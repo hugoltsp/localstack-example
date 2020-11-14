@@ -19,7 +19,7 @@ class AmazonSQSConfig {
     @Primary
     fun sqsClient(@Value("\${cloud.aws.credentials.secret-key}") secretKey: String,
                   @Value("\${cloud.aws.credentials.access-key}") accessKey: String,
-                  @Value("\${cloud.aws.credentials.sqs.endpoint}") endpoint: String,
+                  @Value("\${cloud.aws.credentials.endpoint}") endpoint: String,
                   @Value("\${cloud.aws.region.static}") region: String): AmazonSQSAsync = AmazonSQSBufferedAsyncClient(standard()
             .withEndpointConfiguration(EndpointConfiguration(endpoint, region))
             .withCredentials(AWSStaticCredentialsProvider(BasicAWSCredentials(accessKey, secretKey)))
