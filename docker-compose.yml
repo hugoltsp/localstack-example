@@ -13,4 +13,4 @@ services:
       - AWS_SECRET_ACCESS_KEY=aaa
       - AWS_DEFAULT_OUTPUT=json
     volumes:
-      - ./localstack/data:/tmp/localstack/data
+      - ~/localstack/data:/tmp/localstack
