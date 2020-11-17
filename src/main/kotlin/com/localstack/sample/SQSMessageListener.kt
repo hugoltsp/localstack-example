@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component
 @Component
 class SQSMessageListener {
 
-    @SqsListener(value = ["fila"], deletionPolicy = ON_SUCCESS)
+    @SqsListener(value = ["fila", "fila-1"], deletionPolicy = ON_SUCCESS)
     fun listen(payload: String, @Headers headers: Map<String, String>) {
         LOGGER.info("Retrieved: [{}] w/ headers: [{}] from SQS.", payload, headers)
     }

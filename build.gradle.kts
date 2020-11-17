@@ -28,7 +28,6 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.springframework.cloud:spring-cloud-starter-aws")
     implementation("org.springframework.cloud:spring-cloud-starter-aws-messaging")
-    implementation("cloud.localstack:localstack-utils:0.2.1")
     testImplementation("org.testcontainers:localstack:1.15.0")
     testImplementation("org.testcontainers:junit-jupiter:1.15.0")
 
