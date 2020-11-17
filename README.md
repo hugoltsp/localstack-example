@@ -18,3 +18,11 @@ awslocal sqs receive-message --queue-url http://localhost:4566/queue/fila --max-
 
 aws --endpoint-url=http://localhost:4566 --region=us-east-1 s3 mb s3://test-bucket
 awslocal s3 mb s3://test-bucket
+
+### listando chave kms
+aws kms list-keys --endpoint-url http://localhost:4566
+awslocal kms list-keys
+
+### criando chave kms
+aws kms create-key --endpoint=http://localhost:4566
+awslocal kms create-key

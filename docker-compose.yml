@@ -1,16 +1,13 @@
 version: '3.3'
 services:
   localstack:
-    container_name: localstack
     image: localstack/localstack:0.12.2
     ports:
       - 4566:4566
     environment:
-      - SERVICES=sqs,s3
+      - SERVICES=sqs,s3,kms
       - DATA_DIR=/tmp/localstack/data
-      - DOCKER_HOST=unix:///var/run/docker.sock
-      - AWS_ACCESS_KEY_ID=aaa
-      - AWS_SECRET_ACCESS_KEY=aaa
-      - AWS_DEFAULT_OUTPUT=json
+      - AWS_ACCESS_KEY_ID=test
+      - AWS_SECRET_ACCESS_KEY=test
     volumes:
-      - ~/localstack/data:/tmp/localstack
+      - ~/localstack:/tmp/localstack
