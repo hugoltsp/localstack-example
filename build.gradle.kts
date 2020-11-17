@@ -29,7 +29,8 @@ dependencies {
     implementation("org.springframework.cloud:spring-cloud-starter-aws")
     implementation("org.springframework.cloud:spring-cloud-starter-aws-messaging")
     implementation("cloud.localstack:localstack-utils:0.2.1")
-    testImplementation("org.testcontainers:localstack:1.14.3")
+    testImplementation("org.testcontainers:localstack:1.15.0")
+    testImplementation("org.testcontainers:junit-jupiter:1.15.0")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")

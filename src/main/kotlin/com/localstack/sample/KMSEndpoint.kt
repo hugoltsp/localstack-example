@@ -42,14 +42,6 @@ class KMSEndpoint(val kmsClient: AWSKMS) {
         return String(bytes)
     }
 
-    private fun getByteBufferBase64(string: String): ByteBuffer {
-        val bytes = Base64.getDecoder().decode(string)
-        return ByteBuffer.allocate(bytes.size).apply {
-            put(bytes)
-            flip()
-        }
-    }
-
     private fun getByteBuffer(string: String): ByteBuffer {
         val bytes = string.toByteArray()
         return ByteBuffer.allocate(bytes.size).apply {
